@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  /* Ink Wash palette */
+  --color-ink-dark: #4A4A4A;
+  --color-ink-light: #CBCBCB;
+  --color-ink-wash: #FFFFE3;
+  --color-ink-blue: #6D8196;
+
+  /* Blue Eclipse palette */
+  --color-eclipse-deep: #272757;
+  --color-eclipse-lavender: #8686AC;
+  --color-eclipse-medium: #505081;
+  --color-eclipse-dark: #0F0E47;
+
+  /* Background + text roles */
+  --background: #fff;
+  --heading-color: var(--color-ink-blue);
+  --subheading-color: var(--color-ink-dark);
+  --body-color: var(--color-ink-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --heading-color: var(--color-eclipse-lavender);
+    --subheading-color: var(--color-eclipse-medium);
+    --body-color: var(--color-eclipse-deep);
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--body-color);
+  font-family: Arial, Helvetica, sans-serif;
+}
