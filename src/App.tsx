@@ -2,6 +2,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
 import Gallery from "./components/Gallery";
+import MusicGallery from "./components/MusicGallery";
+import JewelryGallery from "./components/JewelryGallery";
+import KnittingGallery from "./components/KnittingGallery";
 
 export default function App() {
   return (
@@ -21,6 +24,9 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/gallery/music" element={<MusicGallery />} />
+        <Route path="/gallery/jewelry" element={<JewelryGallery />} />
+        <Route path="/gallery/knitting" element={<KnittingGallery />} />
       </Routes>
 
       <footer className="w-full py-6 text-center border-t mt-10">

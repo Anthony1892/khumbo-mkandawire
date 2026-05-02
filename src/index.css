@@ -24,8 +24,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --heading-color: var(--color-eclipse-lavender);
+    --background: #6d8196;
+    --heading-color: var(--color-ink-dark);
     --subheading-color: var(--color-eclipse-medium);
     --body-color: var(--color-eclipse-deep);
   }

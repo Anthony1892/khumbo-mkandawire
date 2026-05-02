@@ -23,7 +23,7 @@ function GalleryCard({ title, imageSrc, link }: GalleryCardProps) {
 export default function Gallery() {
   return (
     <section id="gallery" className="max-w-5xl mx-auto py-16 px-6">
-      <h1 className="text-4xl font-bold text-center text-calm mb-8">Gallery</h1>
+      <h1 className="text-4xl font-bold text-center text-heading mb-8">Gallery</h1>
       <div className="grid md:grid-cols-3 gap-8">
         <GalleryCard title="Music" imageSrc="/assets/music/cover.jpg" link="music" />
         <GalleryCard title="Jewelry" imageSrc="/assets/jewelry/cover.jpg" link="jewelry" />

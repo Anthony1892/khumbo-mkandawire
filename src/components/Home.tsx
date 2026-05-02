@@ -1,17 +1,19 @@
-import heroImage from "../assets/hero.png";
+import heroImage from "../assets/artist-portrait.jpg";
 import SocialLinks from "./SocialLinks";
 
 export default function Home() {
   return (
     <section className="min-h-screen grid md:grid-cols-2 items-center px-6 md:px-16 py-16 gap-10">
-      
+
       {/* Left: Image */}
-      <div className="w-full h-[400px] md:h-[600px] relative">
-        <img
-          src={heroImage}
-          alt="Artist portrait"
-          className="w-full h-full object-cover rounded-2xl shadow-lg"
-        />
+      <div className="w-full max-w-md aspect-[3/4] mx-auto">
+        <div className="w-full aspect-[3/4] relative">
+          <img
+            src={heroImage}
+            alt="Artist portrait"
+            className="w-full h-full object-cover rounded-2xl shadow-lg"
+          />
+        </div>
       </div>
 
       {/* Right: Content */}
