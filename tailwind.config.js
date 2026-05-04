@@ -7,6 +7,7 @@ module.exports = {
         heading: "var(--heading-color)",
         subheading: "var(--subheading-color)",
         body: "var(--body-color)",
+        accent: "var(--accent-color)",
         ink: {
           dark: "var(--color-ink-dark)",
           light: "var(--color-ink-light)",

@@ -1,6 +1,44 @@
+/* globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  /* Palette roles already defined */
+  .text-heading { color: var(--heading-color); }
+  .text-subheading { color: var(--subheading-color); }
+  .text-body { color: var(--body-color); }
+  .text-accent { color: var(--accent-color); }
+
+  /* Adaptive for headings/short text */
+  .text-adaptive-heading {
+    color: var(--heading-color);
+  }
+
+  /* Readable buffer for body text */
+  .text-readable {
+    text-shadow: 0 0 3px rgba(0,0,0,0.6), 0 0 3px rgba(255, 255, 255, 0.986);
+  }
+
+  .menu-links-mobile {
+    color: var(--accent-color);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .text-adaptive-heading {
+    mix-blend-mode: normal;
+    color: var(--heading-color);
+    text-shadow: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .text-adaptive-heading {
+    mix-blend-mode: difference;
+    text-shadow: none;
+  }
+}
 
 :root {
   /* Ink Wash palette */
@@ -16,18 +54,20 @@
   --color-eclipse-dark: #0F0E47;
 
   /* Background + text roles */
-  --background: #fff;
+  --background: #ededed;
   --heading-color: var(--color-ink-blue);
   --subheading-color: var(--color-ink-dark);
-  --body-color: var(--color-ink-light);
+  --body-color: var(--color-eclipse-medium);
+  --accent-color: var(--color-ink-blue);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #6d8196;
-    --heading-color: var(--color-ink-dark);
+    --background: #505081;
+    --heading-color: var(--color-ink-wash);
     --subheading-color: var(--color-eclipse-medium);
-    --body-color: var(--color-eclipse-deep);
+    --body-color: var(--color-eclipse-dark);
+    --accent-color: var(--color-ink-blue);
   }
 }
 
@@ -36,3 +76,29 @@ body {
   color: var(--body-color);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* globals.css */
+
+body {
+  background-image: url('/assets/artist-portrait.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Portrait orientation: fit image fully */
+@media screen and (orientation: portrait) {
+  body {
+    background-size: contain;
+    background-position: top center;
+  }
+}
+
+/* Landscape orientation: fill width but keep aspect ratio */
+@media screen and (orientation: landscape) {
+  body {
+    background-size: auto 100%; /* scale height to fit, width adjusts */
+    background-position: center center;
+  }
+}
+
+
