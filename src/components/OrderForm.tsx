@@ -5,9 +5,10 @@ interface Props {
 }
 
 export default function OrderForm({ onNewOrder }: Props) {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
     const newOrder: OrderItem = {
       id: Date.now(),
@@ -18,44 +19,41 @@ export default function OrderForm({ onNewOrder }: Props) {
       notes: (formData.get("notes") as string) || "",
     };
 
-    onNewOrder(newOrder);
-    e.currentTarget.reset();
+    try {
+      const response = await fetch("/.netlify/functions/send-order-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ order: newOrder }),
+      });
+
+      if (response.ok) {
+        form.reset();
+        alert("Order placed successfully!");
+      } else {
+        alert("Failed to send order email.");
+      }
+    } catch {
+      alert("Unexpected error occurred.");
+    }
   };
 
   return (
     <div className="w-full max-w-md mx-auto bg-background/70 backdrop-blur rounded-lg p-6 shadow-md">
       <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          name="artifact"
-          placeholder="Artifact"
-          className="border p-2 w-full rounded text-body"
-        />
-        <input
-          name="customerName"
-          placeholder="Your Name"
-          className="border p-2 w-full rounded text-body"
-        />
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          className="border p-2 w-full rounded text-body"
-        />
+        <input name="artifact" placeholder="Artifact" className="border p-2 w-full rounded text-body" />
+        <input name="customerName" placeholder="Your Name" className="border p-2 w-full rounded text-body" />
+        <input name="email" type="email" placeholder="Email" className="border p-2 w-full rounded text-body" />
         <input
           name="quantity"
           type="number"
           placeholder="Quantity"
+          defaultValue={1}
+          min={1}
+          max={50}
           className="border p-2 w-full rounded text-body"
         />
-        <textarea
-          name="notes"
-          placeholder="Notes"
-          className="border p-2 w-full rounded text-body"
-        />
-        <button
-          type="submit"
-          className="bg-accent text-white px-4 py-2 rounded hover:opacity-90"
-        >
+        <textarea name="notes" placeholder="Notes" className="border p-2 w-full rounded text-body" />
+        <button type="submit" className="bg-accent text-white px-4 py-2 rounded hover:opacity-90">
           Place Order
         </button>
       </form>

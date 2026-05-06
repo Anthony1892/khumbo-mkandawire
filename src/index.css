@@ -64,7 +64,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #505081;
-    --heading-color: var(--color-ink-wash);
+    --heading-color: var(--color-ink-deep);
     --subheading-color: var(--color-eclipse-medium);
     --body-color: var(--color-eclipse-dark);
     --accent-color: var(--color-ink-blue);
